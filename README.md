@@ -11,5 +11,5 @@ Program ini akan memberikan beberapa pertanyaan berdasarkan mood user, setelah s
 | 140810190040 | Gregorius Evangelist Wijayanto |
 | 140810190048 | Ihsanuddin Dwi Prasetyo |
 
-## Cara Menggunakan Program
-Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dicta tenetur repellat consectetur, saepe, velit fugiat, ipsum rem distinctio eum non vel ad totam repellendus consequatur iusto. Ex assumenda deserunt alias.
+## Skema
+![Skema ExpertSys][skema.png]
