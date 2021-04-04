@@ -12,4 +12,4 @@ Program ini akan memberikan beberapa pertanyaan berdasarkan mood user, setelah s
 | 140810190048 | Ihsanuddin Dwi Prasetyo |
 
 ## Skema
-![Skema ExpertSys][skema.png]
+![Skema ExpertSys][(skema.png)

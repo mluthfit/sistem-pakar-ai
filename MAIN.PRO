@@ -81,7 +81,7 @@ go :-
   X == quit.
 
 greeting :-
-  write('This is the Clasification a Music Prolog Exsys.'), nl,
+  write('This is the Genre Recommendation of Music Prolog Exsys.'), nl,
   write('Enter start or quit at the prompt.'), nl.
 
 % Running program 
