@@ -3,127 +3,73 @@ Title : Panduan Memilih Genre Lagu berdasarkan Mood User
 Packed by Group 3
 */
 
-% Knowledge Base 
-music(thank_you_for_trying_this_program) :-
-  listening_music(no).
+% Knowledge Base
+music(A) :-
+  tree(T),
+  tree_music(T, A).
 
-% Positive
-music(disco) :-
-  listening_music(yes),
-  feel_positive(yes),
-  feel_dancing(yes).
+tree(if_then_else(like_listening_to_music,
+      if_then_else(feel_positive,
+          if_then_else(feel_dancing,
+              music(disco),
+              if_then_else(feel_in_love,
+                  music(love_songs),
+                  if_then_else(feel_relaxed,
+                      music(new_age_or_classical),
+                      if_then_else(feel_excited,
+                          music(rock_punk_or_reggae),
+                          if_then_else(feel_inspiration,
+                              music(broadways),
+                              music(pop_songs)))))),
+          if_then_else(feel_heartbroken,
+              music(sad_love_songs_or_piano_ballad),
+              if_then_else(feel_anxious,
+                  music(rnb),
+                  if_then_else(feel_angry,
+                      music(heavy_metal),
+                      if_then_else(feel_motivation,
+                          music(rap_or_hiphop),
+                          if_then_else(feel_tired,
+                              music(lo_fi),
+                              music(slow_songs))))))),
+  music(thank_you_for_trying_this_program))).
 
-music(love_songs) :-
-  listening_music(yes),
-  feel_positive(yes),
-  feel_dancing(no),
-  feel_in_love(yes).
+tree_music(music(A), A).
+tree_music(if_then_else(Cond,Then,Else), A) :-
+  (   is_true(Cond) ->
+      tree_music(Then, A)
+  ;   tree_music(Else, A)
+  ).
 
-music(new_age_or_classical) :-
-  listening_music(yes),
-  feel_positive(yes),
-  feel_dancing(no),
-  feel_in_love(no),
-  feel_relaxed(yes).
+is_true(Q) :-
+  format("~w?\n", [Q]),
+  read(yes).
 
-music(rock_punk_or_reggae) :-
-  listening_music(yes),
-  feel_positive(yes),
-  feel_dancing(no),
-  feel_in_love(no),
-  feel_relaxed(no),
-  feel_excited(yes).
-
-music(broadways) :-
-  listening_music(yes),
-  feel_positive(yes),
-  feel_dancing(no),
-  feel_in_love(no),
-  feel_relaxed(no),
-  feel_excited(no),
-  feel_inspiration(yes).
-
-music(pop_songs) :-
-  listening_music(yes),
-  feel_positive(yes),
-  feel_dancing(no),
-  feel_in_love(no),
-  feel_relaxed(no),
-  feel_excited(no),
-  feel_inspiration(no).
-  
-
-% Negative
-
-music(sad_love_songs_or_piano_ballad) :-
-  listening_music(yes),
-  feel_positive(no),
-  feel_heartbroken(yes).
-
-music(rnb) :-
-  listening_music(yes),
-  feel_positive(no),
-  feel_heartbroken(no),
-  feel_anxious(yes).
-
-music(heavy_metal) :-
-  listening_music(yes),
-  feel_positive(no),
-  feel_heartbroken(no),
-  feel_anxious(no),
-  feel_angry(yes).
-
-music(rap_or_hiphop) :-
-  listening_music(yes),
-  feel_positive(no),
-  feel_heartbroken(no),
-  feel_anxious(no),
-  feel_angry(no),
-  feel_motivation(yes).
-
-music(lo_fi) :-
-  listening_music(yes),
-  feel_positive(no),
-  feel_heartbroken(no),
-  feel_anxious(no),
-  feel_angry(no),
-  feel_motivation(no),
-  feel_tired(yes).
-
-music(slow_songs) :-
-  listening_music(yes),
-  feel_positive(no),
-  feel_heartbroken(no),
-  feel_anxious(no),
-  feel_angry(no),
-  feel_motivation(no),
-  feel_tired(no).
-
-/* User Interface */
+% User Interface 
 listening_music(X) :- 
-  menuask(like_listening_to_music, X, [yes, no]).
+  menuask(like_listening_to_music, X, is_true(_)).
 feel_positive(X) :- 
-  menuask(feel_positive, X, [yes, no]).
+  menuask(feel_positive, X, is_true(_)).
 feel_dancing(X) :- 
-  menuask(feel_like_dancing, X, [yes, no]).
+  menuask(feel_like_dancing, X, is_true(_)).
 feel_in_love(X) :- 
-  menuask(feel_in_love, X, [yes, no]).
+  menuask(feel_in_love, X, is_true(_)).
 feel_relaxed(X) :- 
-  menuask(feel_relaxed, X, [yes, no]).
+  menuask(feel_relaxed, X, is_true(_)).
 feel_excited(X) :- 
-  menuask(feel_excited, X, [yes, no]).
+  menuask(feel_excited, X, is_true(_)).
 feel_inspiration(X) :- 
-  menuask(feel_like_in_need_of_inspiration, X, [yes, no]).
+  menuask(feel_like_in_need_of_inspiration, X, is_true(_)).
 feel_heartbroken(X) :- 
-  menuask(feel_heartbroken, X, [yes, no]).
+  menuask(feel_heartbroken, X, is_true(_)).
 feel_anxious(X) :- 
-  menuask(feel_anxious, X, [yes, no]).
+  menuask(feel_anxious, X, is_true(_)).
 feel_angry(X) :- 
-  menuask(feel_angry, X, [yes, no]).
+  menuask(feel_angry, X, is_true(_)).
 feel_motivation(X) :- 
-  menuask(need_motivation, X, [yes, no]).
+  menuask(need_motivation, X, is_true(_)).
 feel_tired(X) :- 
-  menuask(feel_tired, X, [yes, no]).
+  menuask(feel_tired, X, is_true(_)).
 
 /* UI rules */
 menuask(A, V, _) :-
