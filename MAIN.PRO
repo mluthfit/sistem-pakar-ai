@@ -1,9 +1,14 @@
 /*
-Title : Panduan Memilih Genre Lagu berdasarkan Mood User
-Author by Group 3
+Title   : Panduan Memilih Genre Lagu berdasarkan Mood User
+
+Authored by Group 3
+Members :
+1) Muhammad Luthfi Taufiqurrahman (140810190036)
+2) Gregorius Evangelist Wijayanto (140810190040)
+3) Ihsanuddin Dwi Prasetyo (140810190048)
 */
 
-% Knowledge Base
+/* Knowledge Base */
 music(A) :-
   tree(T),
   tree_music(T, A).
@@ -41,10 +46,12 @@ tree_music(if_then_else(Cond,Then,Else), A) :-
   ;   tree_music(Else, A)
   ).
 
+/* User Interface & Question Menu */
 is_true(Q) :-
   format("Do you ~w?\n", [Q]),
   read(yes).
 
+/* Simple Shell */
 top_goal(X) :- music(X). 
 
 solve :-
@@ -64,8 +71,12 @@ go :-
   X == quit.
 
 greeting :-
-  write('This is the Music Genre Recommendation of Music Prolog ExSys.'), nl,
-  write('Enter start or quit at the prompt.'), nl.
+  write('===================================================================='), nl,
+  write('Recommending Music Genre Based on Users Mood by Reading Users Input.'), nl,
+  write('Using Prolog Expert System or ExSys.'), nl,
+  write('--------------------------------------------------------------------'), nl,
+  write('Enter start or quit at the prompt.'), nl, 
+  write('===================================================================='), nl, nl.
 
 /* Running program */
 do(start) :-
