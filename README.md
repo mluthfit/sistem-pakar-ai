@@ -22,4 +22,4 @@ Program ini akan memberikan beberapa pertanyaan berdasarkan mood user, setelah s
 - Setelah keluar dari program dan ingin keluar dari sistem prolog, ketik "halt."
 
 ## Skema
-![Skema](img/Skema.png)
+![Skema](img/Skema.jpg)
