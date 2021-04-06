@@ -48,14 +48,13 @@ tree_music(if_then_else(Cond,Then,Else), A) :-
 
 /* User Interface & Question Menu */
 is_true(Q) :-
-  format("Do you ~w?\n", [Q]),
+  format("Do you ~w? [yes/no]\n", [Q]),
   read(yes).
 
 /* Simple Shell */
 top_goal(X) :- music(X). 
 
 solve :-
-  abolish(known, 3),
   top_goal(X),
   write('The answer is '), write(X), nl.
 solve :-
@@ -65,6 +64,7 @@ solve :-
 go :-  
   greeting,
   repeat,
+  nl,
   write('> '),
   read(X),
   do(X),
@@ -76,7 +76,7 @@ greeting :-
   write('Using Prolog Expert System or ExSys.'), nl,
   write('--------------------------------------------------------------------'), nl,
   write('Enter start or quit at the prompt.'), nl, 
-  write('===================================================================='), nl, nl.
+  write('===================================================================='), nl.
 
 /* Running program */
 do(start) :-
